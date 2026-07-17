@@ -3,70 +3,51 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Jan Kraege – Application website for Picnic's Future Leaders Graduate Program Consumer." />
   <title>Jan Kraege | Picnic Future Leaders Graduate Program Consumer</title>
 
   <style>
-    html { scroll-behavior: smooth; }
-
     :root {
-      --blue: #1f6f50;
-      --blue-dark: #123f31;
-      --lime: #b8f000;
-      --black: #17211d;
+      --picnic-red: #e31825;
+      --picnic-red-dark: #b70f19;
+      --picnic-green: #2d7d1f;
+      --picnic-green-dark: #205c17;
+      --picnic-cream: #fbf7ef;
+      --picnic-yellow: #ffd44a;
+      --ink: #222222;
+      --muted: #6b6b67;
       --white: #ffffff;
-      --light: #f4f8f5;
-      --text: #26332d;
-      --muted: #66756d;
-      --border: #dbe8e0;
-      --shadow: 0 14px 34px rgba(31, 111, 80, 0.13);
+      --line: #e8e1d5;
+      --soft-red: #fff0f1;
+      --soft-green: #eef8eb;
+      --soft-yellow: #fff8d9;
+      --shadow: 0 16px 40px rgba(51, 42, 28, 0.12);
+      --small-shadow: 0 8px 22px rgba(51, 42, 28, 0.10);
+      --radius: 22px;
     }
 
     * { box-sizing: border-box; }
 
+    html { scroll-behavior: smooth; }
+
     body {
       margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: var(--light);
-      color: var(--text);
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      background: var(--picnic-cream);
+      color: var(--ink);
       line-height: 1.6;
+      overflow-x: hidden;
     }
 
-    /* Language toggle: German default, button switches full page */
+    a { color: inherit; }
+
     .lang-en, .lang-de { display: none !important; }
-    body.show-de .lang-de { display: initial !important; }
-    body.show-en .lang-en { display: initial !important; }
-
-    body.show-de p.lang-de,
-    body.show-de div.lang-de,
-    body.show-de h1.lang-de,
-    body.show-de h2.lang-de,
-    body.show-de h3.lang-de,
-    body.show-de h4.lang-de,
-    body.show-de span.lang-de,
-    body.show-de strong.lang-de {
-      display: block !important;
-    }
-
-    body.show-en p.lang-en,
-    body.show-en div.lang-en,
-    body.show-en h1.lang-en,
-    body.show-en h2.lang-en,
-    body.show-en h3.lang-en,
-    body.show-en h4.lang-en,
-    body.show-en span.lang-en,
-    body.show-en strong.lang-en {
-      display: block !important;
-    }
-
+    body.show-de .lang-de,
+    body.show-en .lang-en { display: block !important; }
     body.show-de .inline.lang-de,
     body.show-en .inline.lang-en { display: inline !important; }
-
-    body.show-de .application-tag.lang-de,
-    body.show-de .hero-pill.lang-de,
-    body.show-en .application-tag.lang-en,
-    body.show-en .hero-pill.lang-en {
-      display: inline-flex !important;
-    }
+    body.show-de .flex.lang-de,
+    body.show-en .flex.lang-en { display: flex !important; }
 
     nav {
       position: sticky;
@@ -75,55 +56,50 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 28px;
-      padding: 14px 8%;
-      background: rgba(255,255,255,0.98);
-      box-shadow: 0 3px 18px rgba(0,0,0,0.08);
-      border-bottom: 1px solid var(--border);
+      gap: 24px;
+      padding: 14px 5%;
+      background: rgba(251, 247, 239, 0.96);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
+      box-shadow: 0 4px 16px rgba(30, 30, 30, 0.06);
     }
 
-    .logo-wrap {
+    .brand {
       display: flex;
       align-items: center;
-      gap: 14px;
-      white-space: nowrap;
+      gap: 13px;
+      text-decoration: none;
+      min-width: 240px;
     }
 
-    .logo-mark {
-      width: 50px;
-      height: 50px;
-      background: var(--white);
-      position: relative;
-      border: 3px solid var(--lime); border-radius: 14px; box-shadow: 0 4px 12px rgba(31, 111, 80, 0.16);
+    .brand-mark {
+      width: 54px;
+      height: 54px;
+      border-radius: 14px;
+      background: var(--picnic-red);
+      color: var(--white);
+      display: grid;
+      place-items: center;
+      font-weight: 1000;
+      line-height: 0.78;
+      letter-spacing: -1px;
+      text-align: center;
+      box-shadow: 0 8px 18px rgba(227, 24, 37, 0.25);
+      transform: rotate(-2deg);
     }
 
-    .logo-mark::before {
-      content: "PICNIC";
-      position: absolute;
-      top: -17px;
-      left: 0;
-      color: var(--lime);
+    .brand-name {
       font-weight: 900;
-      font-size: 13px;
-      letter-spacing: -0.5px;
+      font-size: 17px;
+      line-height: 1.15;
     }
 
-    .logo-text {
-      font-weight: 800;
-      color: var(--black);
-      font-size: 15px;
-      line-height: 1.2;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    .logo-small {
+    .brand-name small {
       display: block;
-      font-size: 10px;
-      color: var(--muted);
-      font-weight: 700;
-      letter-spacing: 0.5px;
       margin-top: 4px;
+      color: var(--muted);
+      font-size: 10px;
+      letter-spacing: 0.6px;
       text-transform: uppercase;
     }
 
@@ -132,498 +108,1798 @@
       align-items: center;
       justify-content: flex-end;
       flex-wrap: wrap;
-      gap: 18px;
-      list-style: none;
+      gap: 14px;
       margin: 0;
       padding: 0;
+      list-style: none;
     }
 
     nav a {
-      color: var(--black);
       text-decoration: none;
-      font-weight: 700;
-      font-size: 14px;
+      font-weight: 800;
+      font-size: 13px;
     }
 
-    nav a:hover { color: var(--blue); }
+    nav a:hover { color: var(--picnic-red); }
 
-    .language-toggle {
-      background: var(--white);
-      color: var(--blue);
-      border: 2px solid var(--blue);
-      padding: 9px 15px;
-      border-radius: 5px;
-      font-weight: 800;
-      font-size: 14px;
+    .lang-button,
+    .contact-button {
+      border: 0;
+      border-radius: 999px;
+      padding: 10px 16px;
+      font-weight: 900;
       cursor: pointer;
+      font-size: 13px;
     }
 
-    .language-toggle:hover {
-      background: var(--blue);
-      color: var(--white);
+    .lang-button {
+      border: 2px solid var(--picnic-green);
+      background: var(--white);
+      color: var(--picnic-green);
     }
 
-    .nav-button {
-      background: var(--lime);
-      color: var(--black) !important;
-      padding: 10px 18px;
-      border-radius: 5px;
-      border: 1px solid #78a800;
-      font-weight: 800;
+    .contact-button {
+      background: var(--picnic-green);
+      color: var(--white) !important;
+      box-shadow: 0 7px 15px rgba(45, 125, 31, 0.22);
     }
 
     header {
-      min-height: 650px;
+      min-height: 720px;
+      padding: 100px 6% 90px;
       position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       overflow: hidden;
-      color: var(--white);
-      text-align: center;
+      display: grid;
+      grid-template-columns: minmax(300px, 1.05fr) minmax(320px, 0.95fr);
+      align-items: center;
+      gap: 55px;
       background:
-        linear-gradient(rgba(17,17,17,0.72), rgba(17,17,17,0.50)),
-        linear-gradient(120deg, rgba(31,111,80,0.95) 0%, rgba(18,63,49,0.93) 48%, rgba(184,240,0,0.38) 100%),
-        linear-gradient(135deg, #30363d 0%, #1f2428 100%);
+        radial-gradient(circle at 83% 24%, rgba(255, 212, 74, 0.42), transparent 22%),
+        radial-gradient(circle at 14% 78%, rgba(45, 125, 31, 0.10), transparent 28%),
+        var(--picnic-cream);
     }
 
     header::before {
       content: "";
       position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(90deg, rgba(255,255,255,0.11) 0 1px, transparent 1px 90px),
-        linear-gradient(0deg, rgba(255,255,255,0.10) 0 1px, transparent 1px 90px),
-        linear-gradient(28deg, transparent 0 30%, rgba(184,240,0,0.24) 30.2% 30.9%, transparent 31.1%),
-        linear-gradient(155deg, transparent 0 42%, rgba(255,255,255,0.16) 42.2% 42.7%, transparent 43%);
-      opacity: 0.82;
+      width: 540px;
+      height: 540px;
+      border-radius: 50%;
+      right: -190px;
+      top: -190px;
+      background: var(--soft-red);
+      z-index: 0;
     }
 
-    header::after {
+    .hero-copy,
+    .hero-scene { position: relative; z-index: 2; }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 15px;
+      border-radius: 999px;
+      background: var(--white);
+      border: 1px solid var(--line);
+      box-shadow: var(--small-shadow);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--picnic-red);
+    }
+
+    .eyebrow::before {
+      content: "●";
+      color: var(--picnic-green);
+    }
+
+    h1 {
+      font-size: clamp(48px, 6vw, 84px);
+      line-height: 0.98;
+      letter-spacing: -3px;
+      margin: 25px 0 22px;
+      max-width: 850px;
+    }
+
+    .hero-copy h2 {
+      font-size: clamp(21px, 2.2vw, 31px);
+      line-height: 1.35;
+      font-weight: 600;
+      margin: 0;
+      max-width: 800px;
+      color: #3a3a37;
+    }
+
+    .hero-copy h2 strong { color: var(--picnic-red); }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 30px 0;
+    }
+
+    .hero-tags span {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: var(--white);
+      border: 1px solid var(--line);
+      font-weight: 800;
+      font-size: 13px;
+    }
+
+    .start-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      text-decoration: none;
+      border-radius: 999px;
+      background: var(--picnic-green);
+      color: var(--white);
+      padding: 16px 23px;
+      font-weight: 900;
+      box-shadow: 0 12px 25px rgba(45, 125, 31, 0.24);
+    }
+
+    .start-button::after {
+      content: "→";
+      font-size: 21px;
+    }
+
+    .hero-scene {
+      min-height: 500px;
+      display: grid;
+      place-items: center;
+    }
+
+    .store-front {
+      width: min(100%, 570px);
+      min-height: 420px;
+      border: 8px solid var(--white);
+      border-radius: 34px;
+      position: relative;
+      background:
+        linear-gradient(180deg, #fff 0 28%, #f8f0e4 28% 100%);
+      box-shadow: 0 30px 70px rgba(65, 52, 31, 0.18);
+      overflow: hidden;
+    }
+
+    .awning {
+      height: 100px;
+      background:
+        repeating-linear-gradient(
+          90deg,
+          var(--picnic-red) 0 60px,
+          var(--picnic-red) 60px 80px,
+          var(--white) 80px 140px
+        );
+      clip-path: polygon(0 0, 100% 0, 100% 72%, 94% 100%, 88% 72%, 82% 100%, 76% 72%, 70% 100%, 64% 72%, 58% 100%, 52% 72%, 46% 100%, 40% 72%, 34% 100%, 28% 72%, 22% 100%, 16% 72%, 10% 100%, 4% 72%, 0 100%);
+    }
+
+    .store-sign {
+      position: absolute;
+      top: 78px;
+      left: 50%;
+      transform: translateX(-50%) rotate(-1deg);
+      background: var(--picnic-red);
+      color: var(--white);
+      border-radius: 15px;
+      padding: 13px 25px;
+      font-size: 24px;
+      font-weight: 1000;
+      box-shadow: 0 10px 20px rgba(227, 24, 37, 0.24);
+      white-space: nowrap;
+    }
+
+    .store-window {
+      position: absolute;
+      left: 45px;
+      right: 45px;
+      top: 165px;
+      bottom: 40px;
+      border-radius: 18px;
+      background: #f4fbf2;
+      border: 4px solid #325843;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      align-items: end;
+      gap: 16px;
+      padding: 26px 22px;
+      overflow: hidden;
+    }
+
+    .shelf-mini {
+      height: 180px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-around;
+      gap: 7px;
+      border-bottom: 12px solid #8f6b46;
+      position: relative;
+    }
+
+    .shelf-mini::after {
       content: "";
       position: absolute;
-      left: -8%;
-      right: -8%;
-      bottom: -125px;
-      height: 260px;
-      background:
-        linear-gradient(90deg, rgba(31,111,80,0.97) 0 42%, rgba(184,240,0,0.94) 42% 60%, rgba(18,63,49,0.97) 60% 82%, rgba(255,255,255,0.94) 82% 100%);
-      transform: skewY(-3deg);
-      opacity: 0.82;
+      left: 0;
+      right: 0;
+      bottom: -22px;
+      height: 8px;
+      background: #6f5035;
+      border-radius: 0 0 8px 8px;
     }
 
-    .machine-line {
-      position: absolute;
-      background: rgba(255,255,255,0.16);
-      height: 2px;
-      border-radius: 999px;
-      z-index: 1;
-    }
-
-    .machine-line.one { width: 360px; left: 7%; top: 28%; transform: rotate(-8deg); }
-    .machine-line.two { width: 420px; right: 8%; top: 40%; transform: rotate(9deg); }
-    .machine-line.three { width: 300px; left: 30%; bottom: 28%; transform: rotate(4deg); background: rgba(184,240,0,0.40); }
-
-    .hero-content {
+    .product {
+      width: 42px;
+      min-height: 70px;
+      border-radius: 50% 50% 44% 44%;
       position: relative;
-      z-index: 2;
-      max-width: 1080px;
-      padding: 90px 10%;
+      box-shadow: inset 0 -7px 0 rgba(0,0,0,0.07);
     }
 
-    .application-tag {
-      background: rgba(255,255,255,0.92);
-      color: var(--black);
-      padding: 11px 18px;
+    .product.red { background: #ef493e; }
+    .product.green { background: #6dbb45; }
+    .product.yellow { background: #ffd44a; }
+    .product.orange { background: #f59a3b; }
+    .product.purple { background: #8553a5; }
+
+    .product::before {
+      content: "";
+      width: 8px;
+      height: 16px;
+      background: var(--picnic-green-dark);
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%) rotate(10deg);
       border-radius: 5px;
-      font-weight: 900;
-      letter-spacing: 1.8px;
-      text-transform: uppercase;
-      font-size: 13px;
-      margin-bottom: 24px;
-      border-left: 8px solid var(--lime);
-      justify-content: center;
-      align-items: center;
-      box-shadow: 0 10px 26px rgba(0,0,0,0.18);
     }
 
-    header h1 {
-      font-size: 62px;
-      line-height: 1.05;
-      margin: 0;
-      color: var(--white);
-      text-shadow: 0 4px 18px rgba(0,0,0,0.32);
+    .phone {
+      width: 115px;
+      height: 215px;
+      border: 8px solid #242424;
+      border-radius: 24px;
+      background: var(--white);
+      align-self: center;
+      justify-self: center;
+      box-shadow: var(--small-shadow);
+      padding: 12px 8px;
     }
 
-    header h2 {
-      font-size: 27px;
-      font-weight: 500;
-      max-width: 960px;
-      margin: 22px auto 0;
-      color: rgba(255,255,255,0.96);
+    .phone-top {
+      width: 36px;
+      height: 5px;
+      background: #222;
+      border-radius: 999px;
+      margin: 0 auto 13px;
     }
 
-    .tagline {
-      font-size: 18px;
-      max-width: 940px;
-      margin: 26px auto 0;
-      color: rgba(255,255,255,0.95);
+    .phone-card {
+      border-radius: 9px;
+      background: var(--soft-red);
+      padding: 8px;
+      margin-bottom: 7px;
+      font-size: 8px;
+      font-weight: 800;
     }
 
-    .hero-pill {
-      align-items: center;
-      justify-content: center;
-      margin-top: 38px;
-      background: var(--lime);
-      color: var(--black);
-      border-radius: 5px;
-      padding: 14px 22px;
-      font-weight: 900;
-      box-shadow: 0 12px 28px rgba(0,0,0,0.22);
+    .phone-card.green { background: var(--soft-green); }
+    .phone-card.yellow { background: var(--soft-yellow); }
+
+    .cart {
+      position: absolute;
+      right: 4%;
+      bottom: 18px;
+      width: 118px;
+      height: 86px;
+      z-index: 4;
     }
+
+    .cart-basket {
+      height: 55px;
+      border: 6px solid var(--picnic-red);
+      border-top-width: 9px;
+      transform: skew(-8deg);
+      border-radius: 6px 9px 14px 10px;
+      position: relative;
+      background:
+        linear-gradient(90deg, transparent 0 25%, var(--picnic-red) 25% 31%, transparent 31% 62%, var(--picnic-red) 62% 68%, transparent 68%),
+        linear-gradient(0deg, transparent 0 35%, var(--picnic-red) 35% 44%, transparent 44% 70%, var(--picnic-red) 70% 79%, transparent 79%);
+    }
+
+    .cart-handle {
+      position: absolute;
+      left: -23px;
+      top: -13px;
+      width: 36px;
+      height: 30px;
+      border-left: 6px solid var(--picnic-red);
+      border-top: 6px solid var(--picnic-red);
+      border-radius: 6px 0 0 0;
+    }
+
+    .wheel {
+      position: absolute;
+      bottom: 0;
+      width: 19px;
+      height: 19px;
+      border-radius: 50%;
+      background: #222;
+    }
+
+    .wheel.one { left: 20px; }
+    .wheel.two { right: 13px; }
 
     section {
-      padding: 74px 8%;
-      max-width: 1300px;
+      position: relative;
+      padding: 90px 7%;
+      max-width: 1450px;
       margin: 0 auto;
       scroll-margin-top: 100px;
     }
 
-    h3 {
-      font-size: 42px;
-      color: var(--black);
-      text-align: center;
-      margin: 0 0 18px;
-      letter-spacing: -0.4px;
-      font-weight: 500;
+    .aisle-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--picnic-red);
+      color: var(--white);
+      border-radius: 8px;
+      padding: 8px 14px;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      box-shadow: 0 7px 15px rgba(227, 24, 37, 0.19);
+    }
+
+    .section-title {
+      margin: 18px 0 12px;
+      font-size: clamp(36px, 4.2vw, 59px);
+      line-height: 1.05;
+      letter-spacing: -2px;
     }
 
     .section-subtitle {
-      text-align: center;
-      max-width: 850px;
-      margin: 0 auto 40px;
-      color: var(--muted);
-      font-size: 18px;
-    }
-
-    .accent-line {
-      width: 88px;
-      height: 5px;
-      background: linear-gradient(90deg, var(--blue), var(--lime));
-      margin: 0 auto 34px;
-      border-radius: 5px;
-    }
-
-    .intro-box, .intro {
-      max-width: 940px;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    .intro-box p, .intro p {
-      font-size: 18px;
-      color: #374151;
-      line-height: 1.85;
-      margin-bottom: 14px;
-    }
-
-    .intro-box strong, .intro strong { color: var(--blue); }
-
-    .status-box {
       max-width: 900px;
-      margin: 34px auto 0;
+      font-size: 19px;
+      color: var(--muted);
+      margin: 0 0 45px;
+    }
+
+    .shelf {
       background: var(--white);
-      border-left: 8px solid var(--lime);
-      border-radius: 5px;
-      padding: 32px;
+      border-radius: var(--radius);
+      padding: 34px 28px 55px;
       box-shadow: var(--shadow);
-      text-align: center;
-    }
-
-    .status-box h4 {
-      color: var(--blue);
-      font-size: 24px;
-      margin: 0 0 12px;
-    }
-
-    .status-box p {
-      color: #374151;
-      font-size: 17px;
-      line-height: 1.75;
-      margin: 0;
-    }
-
-    .profile-grid, .program-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(300px, 550px));
-      justify-content: center;
-      gap: 28px;
-    }
-
-    .profile-box, .program-box {
-      background: var(--white);
-      border-radius: 5px;
-      padding: 42px;
-      min-height: 315px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      text-align: center;
-      box-shadow: var(--shadow);
-      border: 1px solid var(--border);
-      border-top: 7px solid var(--blue);
-    }
-
-    .profile-box:nth-child(2),
-    .profile-box:nth-child(3),
-    .program-box:nth-child(2),
-    .program-box:nth-child(3) {
-      border-top-color: var(--lime);
-      background: #f8fafb;
-    }
-
-    .profile-box h4, .program-box h4 {
-      color: var(--blue);
-      font-size: 27px;
-      margin: 12px 0 14px;
-      font-weight: 700;
-    }
-
-    .profile-box p, .program-box p {
-      color: #374151;
-      font-size: 17px;
-      margin: 8px 0;
-    }
-
-    .emoji { font-size: 38px; }
-
-    .timeline {
-      max-width: 930px;
-      margin: 0 auto;
-      padding-left: 35px;
-      border-left: 5px solid var(--blue);
-    }
-
-    .timeline div {
-      margin-bottom: 24px;
-      font-size: 17px;
-      background: var(--white);
-      padding: 24px 26px;
-      border-radius: 5px;
-      box-shadow: 0 8px 22px rgba(0,31,95,0.08);
-      border: 1px solid var(--border);
-    }
-
-    .timeline strong { color: var(--blue); }
-
-    .technology-band {
-      max-width: none;
-      background:
-        linear-gradient(rgba(18,63,49,0.91), rgba(23,33,29,0.93)),
-        linear-gradient(120deg, #1f6f50 0%, #123f31 48%, #17211d 100%);
-      color: var(--white);
-      padding: 82px 10%;
-      text-align: center;
+      border: 1px solid var(--line);
       position: relative;
       overflow: hidden;
     }
 
-    .technology-band::before {
+    .shelf::after {
       content: "";
       position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(90deg, rgba(255,255,255,0.08) 0 1px, transparent 1px 80px),
-        linear-gradient(0deg, rgba(255,255,255,0.08) 0 1px, transparent 1px 80px),
-        linear-gradient(28deg, transparent 0 38%, rgba(226,0,21,0.35) 38.2% 39%, transparent 39.2%);
-      opacity: 0.9;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 27px;
+      background: linear-gradient(#a77a4e, #7e5837);
+      border-top: 6px solid #c69969;
     }
 
-    .technology-band h3, .technology-band p {
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(130px, 1fr));
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .produce-card {
+      min-height: 250px;
+      border-radius: 22px;
+      padding: 25px 18px 24px;
+      text-align: center;
+      position: relative;
+      background: #fffdf8;
+      border: 1px solid #eadfce;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: var(--small-shadow);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .produce-card:hover {
+      transform: translateY(-7px) rotate(-0.7deg);
+      box-shadow: 0 18px 32px rgba(55, 44, 28, 0.16);
+    }
+
+    .produce-illustration {
+      width: 92px;
+      height: 92px;
+      border-radius: 50%;
+      margin: 0 auto 18px;
+      position: relative;
+      box-shadow: inset 0 -12px 0 rgba(0,0,0,0.07);
+    }
+
+    .produce-illustration::before {
+      content: "";
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      width: 12px;
+      height: 24px;
+      background: var(--picnic-green-dark);
+      border-radius: 10px;
+      transform: translateX(-50%) rotate(16deg);
+    }
+
+    .apple { background: #e83f3f; }
+    .lemon { background: #f3d84b; }
+    .avocado { background: #6ea64a; border-radius: 52% 52% 45% 45%; }
+    .tomato { background: #f05a45; }
+    .carrot { background: #f59738; border-radius: 48% 48% 60% 60%; }
+    .grapes {
+      background:
+        radial-gradient(circle at 35% 30%, #8750a4 0 16%, transparent 17%),
+        radial-gradient(circle at 60% 29%, #784096 0 16%, transparent 17%),
+        radial-gradient(circle at 48% 50%, #8b55aa 0 17%, transparent 18%),
+        radial-gradient(circle at 30% 55%, #744091 0 15%, transparent 16%),
+        radial-gradient(circle at 66% 57%, #8e5aad 0 15%, transparent 16%),
+        radial-gradient(circle at 47% 75%, #754092 0 15%, transparent 16%);
+      box-shadow: none;
+    }
+
+    .price-tag {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      padding: 4px 7px;
+      border-radius: 5px;
+      background: var(--picnic-yellow);
+      font-size: 10px;
+      font-weight: 1000;
+      transform: rotate(3deg);
+    }
+
+    .produce-card h3 {
+      font-size: 19px;
+      margin: 0 0 8px;
+      line-height: 1.2;
+    }
+
+    .produce-card p {
+      font-size: 14px;
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .case-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.12fr;
+      gap: 34px;
+      align-items: stretch;
+    }
+
+    .case-summary {
+      border-radius: var(--radius);
+      padding: 38px;
+      background: var(--picnic-green-dark);
+      color: var(--white);
+      box-shadow: var(--shadow);
+    }
+
+    .case-summary h3 {
+      font-size: 36px;
+      line-height: 1.1;
+      margin: 0 0 20px;
+    }
+
+    .case-summary p {
+      color: rgba(255,255,255,0.88);
+      font-size: 17px;
+    }
+
+    .result-stamp {
+      margin-top: 26px;
+      background: var(--picnic-yellow);
+      color: var(--ink);
+      border-radius: 14px;
+      padding: 18px 20px;
+      font-weight: 1000;
+      transform: rotate(-1deg);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.18);
+    }
+
+    .insight-shelf {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .insight-box {
+      border-radius: 19px;
+      padding: 23px;
+      background: var(--white);
+      border: 1px solid var(--line);
+      box-shadow: var(--small-shadow);
+      position: relative;
+    }
+
+    .insight-box::before {
+      content: attr(data-number);
+      position: absolute;
+      right: 15px;
+      top: 10px;
+      font-size: 32px;
+      font-weight: 1000;
+      color: #ece5d9;
+    }
+
+    .insight-box h4 {
+      color: var(--picnic-red);
+      font-size: 18px;
+      margin: 0 0 9px;
+    }
+
+    .insight-box p {
+      font-size: 15px;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .fast-section {
+      max-width: none;
+      background: var(--ink);
+      color: var(--white);
+      padding: 95px 7%;
+    }
+
+    .fast-section .inner {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .fast-section .section-subtitle { color: rgba(255,255,255,0.72); }
+
+    .comparison {
+      display: grid;
+      grid-template-columns: 1fr 190px 1fr;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .company-crate {
+      background: #2f322f;
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: var(--radius);
+      padding: 34px;
+      min-height: 355px;
+      box-shadow: 0 18px 42px rgba(0,0,0,0.25);
+    }
+
+    .company-crate.red { border-top: 8px solid var(--picnic-red); }
+    .company-crate.green { border-top: 8px solid #71bf44; }
+
+    .company-crate h3 {
+      margin: 0 0 10px;
+      font-size: 30px;
+    }
+
+    .company-crate .label {
+      display: inline-block;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.10);
+      padding: 7px 11px;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+    }
+
+    .company-crate ul {
+      margin: 24px 0 0;
+      padding-left: 20px;
+    }
+
+    .company-crate li { margin: 10px 0; color: rgba(255,255,255,0.83); }
+
+    .formula {
+      width: 190px;
+      height: 190px;
+      border-radius: 50%;
+      background: var(--picnic-yellow);
+      color: var(--ink);
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 25px;
+      font-weight: 1000;
+      font-size: 18px;
+      transform: rotate(-3deg);
+      box-shadow: 0 14px 30px rgba(255, 212, 74, 0.20);
+    }
+
+    .digital-store {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 44px;
+      align-items: center;
+    }
+
+    .phone-large {
+      width: min(100%, 390px);
+      margin: 0 auto;
+      background: #202020;
+      border: 10px solid #202020;
+      border-radius: 42px;
+      padding: 14px;
+      box-shadow: 0 25px 55px rgba(0,0,0,0.22);
+    }
+
+    .screen {
+      background: #f8f7f2;
+      min-height: 650px;
+      border-radius: 29px;
+      padding: 24px 18px;
+    }
+
+    .app-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 21px;
+      font-weight: 900;
+    }
+
+    .app-logo {
+      background: var(--picnic-red);
+      color: var(--white);
+      border-radius: 8px;
+      padding: 7px 8px;
+      font-size: 10px;
+      line-height: 0.85;
+      text-align: center;
+    }
+
+    .app-banner {
+      border-radius: 18px;
+      background: var(--soft-yellow);
+      padding: 18px;
+      margin-bottom: 17px;
+      border: 1px solid #eadc9f;
+    }
+
+    .app-banner strong { display: block; font-size: 18px; }
+
+    .app-products {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .app-product {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      min-height: 140px;
+      padding: 13px;
+      position: relative;
+    }
+
+    .app-product .blob {
+      width: 57px;
+      height: 57px;
+      border-radius: 50%;
+      margin-bottom: 10px;
+      box-shadow: inset 0 -8px rgba(0,0,0,0.06);
+    }
+
+    .app-product small { color: var(--muted); display: block; }
+    .app-product b { font-size: 14px; }
+
+    .app-bottom {
+      margin-top: 20px;
+      border-top: 1px solid var(--line);
+      padding-top: 15px;
+      display: flex;
+      justify-content: space-around;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .digital-points {
+      display: grid;
+      gap: 17px;
+    }
+
+    .digital-point {
+      display: grid;
+      grid-template-columns: 60px 1fr;
+      gap: 17px;
+      align-items: center;
+      padding: 21px;
+      border-radius: 18px;
+      background: var(--white);
+      border: 1px solid var(--line);
+      box-shadow: var(--small-shadow);
+    }
+
+    .digital-point .icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 17px;
+      display: grid;
+      place-items: center;
+      font-size: 27px;
+      background: var(--soft-red);
+    }
+
+    .digital-point:nth-child(2) .icon { background: var(--soft-green); }
+    .digital-point:nth-child(3) .icon { background: var(--soft-yellow); }
+    .digital-point:nth-child(4) .icon { background: #eef3ff; }
+
+    .digital-point h3 {
+      font-size: 20px;
+      margin: 0 0 4px;
+    }
+
+    .digital-point p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .pricing-counter {
+      border-radius: 30px;
+      background: var(--white);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      padding: 42px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      position: relative;
+    }
+
+    .pricing-counter::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      height: 17px;
+      border-radius: 30px 30px 0 0;
+      background: repeating-linear-gradient(90deg, var(--picnic-red) 0 60px, #fff 60px 120px);
+    }
+
+    .price-card {
+      padding: 30px 25px 24px;
+      border-radius: 19px;
+      background: #fffdf9;
+      border: 1px solid var(--line);
+      position: relative;
+    }
+
+    .price-card .ticket {
+      display: inline-block;
+      background: var(--picnic-yellow);
+      border-radius: 7px;
+      padding: 7px 10px;
+      font-weight: 1000;
+      font-size: 12px;
+      transform: rotate(-2deg);
+      margin-bottom: 17px;
+    }
+
+    .price-card h3 {
+      font-size: 25px;
+      margin: 0 0 10px;
+    }
+
+    .price-card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .pricing-quote {
+      text-align: center;
+      font-size: 24px;
+      max-width: 900px;
+      margin: 34px auto 0;
+      font-weight: 800;
+    }
+
+    .route {
+      position: relative;
+      margin-top: 20px;
+      padding: 40px 0 15px;
+    }
+
+    .route-line {
+      position: absolute;
+      left: 7%;
+      right: 7%;
+      top: 85px;
+      height: 8px;
+      background: repeating-linear-gradient(90deg, var(--picnic-red) 0 18px, transparent 18px 32px);
+    }
+
+    .route-grid {
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      gap: 12px;
       position: relative;
       z-index: 2;
     }
 
-    .technology-band h3 { color: var(--white); }
-
-    .technology-band p {
-      max-width: 940px;
-      margin: 12px auto;
-      font-size: 19px;
-      line-height: 1.85;
-      color: rgba(255,255,255,0.96);
+    .route-stop {
+      text-align: center;
     }
 
-    .cards {
+    .route-pin {
+      width: 78px;
+      height: 78px;
+      border-radius: 50%;
+      margin: 0 auto 16px;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-      gap: 24px;
-      margin-top: 20px;
-    }
-
-    .card {
+      place-items: center;
       background: var(--white);
-      border-radius: 5px;
-      padding: 32px;
-      box-shadow: var(--shadow);
+      border: 6px solid var(--picnic-red);
+      font-size: 28px;
+      box-shadow: var(--small-shadow);
+    }
+
+    .route-stop:nth-child(even) .route-pin { border-color: var(--picnic-green); }
+
+    .route-stop h3 {
+      font-size: 15px;
+      margin: 0 0 5px;
+    }
+
+    .route-stop p {
+      font-size: 12px;
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .owner-board {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 18px;
+    }
+
+    .owner-card {
+      background: var(--white);
+      border-radius: 19px;
+      padding: 28px 19px;
+      border: 1px solid var(--line);
+      box-shadow: var(--small-shadow);
       text-align: center;
-      border: 1px solid var(--border);
-      border-top: 6px solid var(--lime);
+      position: relative;
+      min-height: 220px;
     }
 
-    .card.accent {
-      background:
-        linear-gradient(180deg, rgba(235,246,239,0.78), rgba(255,255,255,0.96)),
-        var(--white);
+    .owner-card::before {
+      content: "";
+      width: 36px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--picnic-red);
+      position: absolute;
+      top: 17px;
+      left: 50%;
+      transform: translateX(-50%);
     }
 
-    .card h4 {
-      color: var(--blue);
-      font-size: 22px;
-      margin: 10px 0 12px;
+    .owner-card .emoji {
+      font-size: 34px;
+      margin: 18px 0 10px;
     }
 
-    .card p {
-      color: #374151;
-      font-size: 16.5px;
+    .owner-card h3 {
+      font-size: 18px;
+      margin: 0 0 8px;
     }
 
-    .highlight {
+    .owner-card p {
+      font-size: 14px;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .process-belt {
+      margin-top: 45px;
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: var(--small-shadow);
+    }
+
+    .process-step {
+      background: var(--ink);
+      color: var(--white);
+      padding: 24px 15px;
+      text-align: center;
+      border-right: 1px solid rgba(255,255,255,0.12);
+      position: relative;
+    }
+
+    .process-step:last-child { border-right: 0; }
+    .process-step:nth-child(even) { background: #303531; }
+
+    .process-step span {
+      display: block;
+      color: var(--picnic-yellow);
+      font-size: 12px;
+      font-weight: 1000;
+      margin-bottom: 7px;
+    }
+
+    .process-step b { font-size: 14px; }
+
+    .checkout-section {
       max-width: none;
+      background: var(--picnic-green-dark);
+      color: var(--white);
+      padding: 100px 7%;
+    }
+
+    .checkout-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 55px;
+      align-items: center;
+    }
+
+    .checkout-copy h2 {
+      font-size: clamp(42px, 5vw, 68px);
+      line-height: 1.02;
+      letter-spacing: -2px;
+      margin: 15px 0 20px;
+    }
+
+    .checkout-copy p {
+      color: rgba(255,255,255,0.82);
+      font-size: 18px;
+    }
+
+    .receipt {
+      background: #fffef8;
+      color: var(--ink);
+      padding: 38px 35px 45px;
+      max-width: 500px;
+      margin: 0 auto;
+      position: relative;
+      box-shadow: 0 25px 55px rgba(0,0,0,0.28);
+      font-family: "Courier New", monospace;
+    }
+
+    .receipt::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -17px;
+      height: 18px;
       background:
-        linear-gradient(rgba(23,33,29,0.91), rgba(23,33,29,0.95)),
-        linear-gradient(135deg, #1f6f50 0%, #123f31 46%, #17211d 100%);
-      color: var(--white);
-      padding: 90px 10%;
+        linear-gradient(135deg, transparent 10px, #fffef8 0) 0 0/20px 20px repeat-x,
+        linear-gradient(225deg, transparent 10px, #fffef8 0) 10px 0/20px 20px repeat-x;
+    }
+
+    .receipt h3 {
       text-align: center;
-      border-top: 8px solid var(--lime);
-      scroll-margin-top: 90px;
+      margin: 0 0 8px;
+      font-size: 27px;
+      font-family: Arial, sans-serif;
     }
 
-    .highlight h3 {
-      color: var(--white);
-      font-size: 44px;
-      margin-bottom: 18px;
+    .receipt .receipt-sub {
+      text-align: center;
+      color: var(--muted);
+      margin-bottom: 26px;
+      font-size: 13px;
     }
 
-    .highlight p {
-      max-width: 900px;
-      margin: 14px auto;
-      font-size: 19px;
-      line-height: 1.85;
-      color: rgba(255,255,255,0.96);
+    .receipt-line {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      border-bottom: 1px dashed #bbb7ae;
+      padding: 11px 0;
+      font-size: 14px;
+    }
+
+    .receipt-total {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 21px;
+      font-size: 18px;
+      font-weight: 1000;
+    }
+
+    .barcode {
+      height: 58px;
+      margin: 28px auto 20px;
+      max-width: 300px;
+      background:
+        repeating-linear-gradient(
+          90deg,
+          #111 0 2px,
+          transparent 2px 5px,
+          #111 5px 9px,
+          transparent 9px 12px,
+          #111 12px 13px,
+          transparent 13px 17px
+        );
+    }
+
+    .receipt-contact {
+      text-align: center;
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .receipt-contact a {
+      color: var(--picnic-green-dark);
+      font-weight: 900;
+      text-decoration: none;
     }
 
     footer {
+      background: #171a18;
+      color: rgba(255,255,255,0.76);
       text-align: center;
-      padding: 50px 10%;
-      background: var(--black);
-      color: var(--white);
-      border-top: 8px solid var(--lime);
+      padding: 28px 6%;
+      font-size: 13px;
     }
 
-    footer p {
-      margin: 14px 0;
-      font-size: 17px;
-      color: rgba(255,255,255,0.92);
+    @media (max-width: 1180px) {
+      nav { flex-direction: column; }
+      .brand { min-width: auto; }
+      header { grid-template-columns: 1fr; }
+      .hero-scene { min-height: 420px; }
+      .product-grid { grid-template-columns: repeat(3, 1fr); }
+      .owner-board { grid-template-columns: repeat(3, 1fr); }
+      .route-grid { grid-template-columns: repeat(4, 1fr); gap: 30px 12px; }
+      .route-line { display: none; }
     }
 
-    footer strong {
-      font-size: 19px;
-      color: var(--white);
+    @media (max-width: 900px) {
+      .case-layout,
+      .digital-store,
+      .checkout-inner { grid-template-columns: 1fr; }
+
+      .comparison { grid-template-columns: 1fr; }
+      .formula { margin: 0 auto; width: 160px; height: 160px; }
+      .pricing-counter { grid-template-columns: 1fr; }
+      .process-belt { grid-template-columns: repeat(2, 1fr); }
+      .product-grid { grid-template-columns: repeat(2, 1fr); }
+      .route-grid { grid-template-columns: repeat(2, 1fr); }
+      .owner-board { grid-template-columns: repeat(2, 1fr); }
     }
 
-    a {
-      color: var(--blue);
-      text-decoration: none;
-      font-weight: 800;
-    }
+    @media (max-width: 620px) {
+      nav ul { justify-content: center; }
+      nav li:nth-child(n+5):not(:last-child):not(:nth-last-child(2)) { display: none; }
 
-    footer a { color: #ffffff; }
-    footer a:hover { color: var(--white); }
+      header { padding: 75px 6% 70px; }
+      h1 { letter-spacing: -2px; }
+      .store-front { min-height: 370px; }
+      .store-window { grid-template-columns: 1fr 1fr; }
+      .store-window .shelf-mini:last-child { display: none; }
 
-    @media (max-width: 1050px) {
-      nav {
-        flex-direction: column;
-        gap: 16px;
-      }
+      section { padding: 70px 6%; }
+      .product-grid,
+      .insight-shelf,
+      .owner-board,
+      .route-grid,
+      .process-belt { grid-template-columns: 1fr; }
 
-      nav ul {
-        justify-content: center;
-        gap: 14px;
-      }
-
-      header h1 { font-size: 52px; }
-    }
-
-    @media (max-width: 800px) {
-      nav { padding: 18px 6%; }
-
-      header { min-height: 620px; }
-      header h1 { font-size: 38px; }
-      header h2 { font-size: 21px; }
-
-      h3 { font-size: 31px; }
-      section { padding: 56px 6%; }
-
-      .profile-grid, .program-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .profile-box, .program-box {
-        min-height: auto;
-        padding: 34px 24px;
-      }
-
-      .timeline { padding-left: 22px; }
-
-      .logo-wrap {
-        flex-direction: column;
-        gap: 10px;
-      }
+      .produce-card { min-height: auto; }
+      .case-summary { padding: 29px; }
+      .pricing-counter { padding: 36px 20px 25px; }
+      .screen { min-height: 585px; }
     }
   </style>
 </head>
 
 <body class="show-de">
-<nav><div class="logo-wrap"><div class="logo-mark"></div><div class="logo-text">Picnic<span class="logo-small"><span class="lang-de inline">Bewerbung Future Leaders Graduate Program Consumer</span><span class="lang-en inline">Future Leaders Graduate Program Consumer Application</span></span></div></div><ul><li><a href="#intro"><span class="lang-de inline">Über mich</span><span class="lang-en inline">About Me</span></a></li><li><a href="#profile"><span class="lang-de inline">Profil</span><span class="lang-en inline">Profile</span></a></li><li><a href="#journey"><span class="lang-de inline">Werdegang</span><span class="lang-en inline">Journey</span></a></li><li><a href="#picnic"><span class="lang-de inline">Warum Picnic</span><span class="lang-en inline">Why Picnic</span></a></li><li><a href="#program"><span class="lang-de inline">Programm-Fit</span><span class="lang-en inline">Program Fit</span></a></li><li><a href="#requirements"><span class="lang-de inline">Direkter Match</span><span class="lang-en inline">Direct Match</span></a></li><li><a href="#ideas"><span class="lang-de inline">Consumer-Fokus</span><span class="lang-en inline">Consumer Focus</span></a></li><li><button class="language-toggle" id="languageToggle" type="button">English</button></li><li><a class="nav-button" href="#contact"><span class="lang-de inline">Kontakt</span><span class="lang-en inline">Contact</span></a></li></ul></nav>
-<header><div class="machine-line one"></div><div class="machine-line two"></div><div class="machine-line three"></div><div class="hero-content"><p class="application-tag lang-de">Picnic Bewerbung</p><p class="application-tag lang-en">Picnic Application</p><h1 class="lang-de">Future Leaders Graduate Program<br>Consumer</h1><h1 class="lang-en">Future Leaders Graduate Program<br>Consumer</h1><h2 class="lang-de">Customer Behaviour, kommerzielle Analyse und digitales Marketing – für smarteres Pricing, bessere Sortimente und ein App-Erlebnis, das Kundinnen und Kunden begeistert.</h2><h2 class="lang-en">Combining customer behaviour, commercial analysis and digital marketing to improve pricing, assortment and an app experience that customers love.</h2><p class="tagline lang-de">Management Graduate • Customer Insights • Pricing • Category Thinking • Digital Marketing • Ownership</p><p class="tagline lang-en">Management Graduate • Customer Insights • Pricing • Category Thinking • Digital Marketing • Ownership</p><div class="hero-pill lang-de">Fast-paced • Data-driven • Hands-on • Customer-first • Act like an Owner</div><div class="hero-pill lang-en">Fast-paced • Data-driven • Hands-on • Customer-first • Act like an Owner</div></div></header>
-<section id="intro"><div class="intro-box"><h3 class="lang-de">Liebes Picnic Team,</h3><h3 class="lang-en">Dear Picnic Team,</h3><div class="accent-line"></div><p class="lang-de">Mein Name ist Jan Kraege. Ich habe kürzlich meinen Master of Management an der University of Technology Sydney abgeschlossen und möchte meinen Berufseinstieg in einem schnelllebigen, datengetriebenen Umfeld gestalten, in dem Customer Insights, kommerzielle Entscheidungen, Technologie und operative Umsetzung unmittelbar zusammenkommen.</p><p class="lang-en">My name is Jan Kraege. I recently completed my Master of Management at the University of Technology Sydney and want to begin my career in a fast-paced, data-driven environment where customer insights, commercial decisions, technology and hands-on execution come together.</p><p class="lang-de">In Australien habe ich sowohl die strukturierte, cross-funktionale Analyse eines internationalen Unternehmens als auch die Dynamik eines jungen, schnell wachsenden Businesses mit Start-up-Charakter erlebt. Dadurch habe ich gelernt, analytische Tiefe mit Tempo, Anpassungsfähigkeit und Ownership zu verbinden.</p><p class="lang-en">In Australia, I experienced both structured cross-functional analysis in an international company and the dynamics of a young, fast-growing business with a start-up mindset. This taught me to combine analytical depth with speed, adaptability and ownership.</p><p class="lang-de">Das Consumer Graduate Program verbindet genau die Themen, in denen ich wachsen möchte: <strong>Customer Behaviour, Category Management, Pricing, Promotions, App Experience, Prozessoptimierung und cross-funktionale Projekte mit sichtbarem Business Impact</strong>.</p><p class="lang-en">The Consumer Graduate Program combines exactly the areas in which I want to grow: <strong>customer behaviour, category management, pricing, promotions, app experience, process optimisation and cross-functional projects with visible business impact</strong>.</p></div><div class="status-box"><h4 class="lang-de">Meine Arbeitsweise</h4><h4 class="lang-en">How I Work</h4><p class="lang-de">Kommunikativ, kreativ, analytisch und proaktiv. Ich bringe Menschen zusammen, hinterfrage Annahmen konstruktiv und übersetze Daten in klare, umsetzbare nächste Schritte.</p><p class="lang-en">Communicative, creative, analytical and proactive. I bring people together, challenge assumptions constructively and translate data into clear, actionable next steps.</p></div></section>
-<section id="profile"><h3>My Profile in 60 Seconds</h3><div class="accent-line"></div><p class="section-subtitle lang-de">Ein international erfahrener Management Graduate mit Customer- und Marktverständnis, kommerziellem Denken und der Motivation, in einem fast-paced Umfeld Verantwortung zu übernehmen.</p><p class="section-subtitle lang-en">An internationally experienced Management graduate with strong customer and market understanding, commercial thinking and the motivation to take ownership in a fast-paced environment.</p><div class="profile-grid">
-<div class="profile-box"><div class="emoji">🛒</div><h4>Customer & Category Mindset</h4><p class="lang-de">Mich interessiert, wie Kundenverhalten, Sortiment, Preis und Promotion zusammenspielen und Kaufentscheidungen beeinflussen.</p><p class="lang-en">I am interested in how customer behaviour, assortment, pricing and promotions interact and influence purchasing decisions.</p></div>
-<div class="profile-box"><div class="emoji">📊</div><h4>Commercial Analysis</h4><p class="lang-de">Bei BRITA analysierte ich Kundensegmente, Kaufverhalten, Marktpotenzial, Wettbewerb und die wirtschaftliche Machbarkeit eines Subscription Models und präsentierte eine klare Empfehlung dem Management.</p><p class="lang-en">At BRITA, I analysed customer segments, purchasing behaviour, market potential, competitors and the commercial viability of a subscription model, then presented a clear recommendation to management.</p></div>
-<div class="profile-box"><div class="emoji">⚡</div><h4>Fast-paced & Hands-on</h4><p class="lang-de">Bei Tokyo Headspa arbeitete ich in einem jungen, schnell wachsenden Business mit Start-up-Charakter, wechselnden Prioritäten und starkem Umsetzungsfokus.</p><p class="lang-en">At Tokyo Headspa, I worked in a young, fast-growing business with a start-up mindset, changing priorities and a strong focus on execution.</p></div>
-<div class="profile-box"><div class="emoji">🌍</div><h4>International Collaboration</h4><p class="lang-de">Mehrere Jahre Studium und Arbeit in Australien stärkten meine Selbstständigkeit, interkulturelle Kommunikation und Anpassungsfähigkeit.</p><p class="lang-en">Several years of studying and working in Australia strengthened my independence, intercultural communication and adaptability.</p></div></div></section>
-<section id="journey"><h3 class="lang-de">Mein internationaler Werdegang</h3><h3 class="lang-en">My International Journey</h3><div class="accent-line"></div><div class="timeline">
-<div><strong class="lang-de">🇩🇪 Bachelor in Business Administration (2020–2024)</strong><strong class="lang-en">🇩🇪 Bachelor in Business Administration (2020–2024)</strong><br><span class="lang-de inline">Schwerpunkte Marketing, International Management und Organisationspsychologie.</span><span class="lang-en inline">Focus on Marketing, International Management and Organisational Psychology.</span></div>
-<div><strong class="lang-de">🇦🇺 Marketingfokussiertes Auslandssemester an der UTS (2022)</strong><strong class="lang-en">🇦🇺 Marketing-Focused Exchange Semester at UTS (2022)</strong><br><span class="lang-de inline">Ausschließlich Marketingkurse und erster intensiver internationaler Business-Kontext.</span><span class="lang-en inline">Exclusively marketing-related courses and my first intensive international business environment.</span></div>
-<div><strong>🇦🇺 BRITA Australia — Sales & Marketing Assistant</strong><br><span class="lang-de inline">In einem kommerziell dynamischen Umfeld arbeitete ich mit Marketing, Sales und E-Commerce. Ich analysierte Customer Behaviour, Marktpotenzial und Wettbewerbsdynamiken und entwickelte eine strategische Empfehlung zur kommerziellen Tragfähigkeit eines Subscription Models.</span><span class="lang-en inline">In a commercially dynamic environment, I worked with Marketing, Sales and E-commerce. I analysed customer behaviour, market potential and competitive dynamics and developed a strategic recommendation on the commercial viability of a subscription model.</span></div>
-<div><strong class="lang-de">🇩🇪 Bachelorarbeit — Supply-Chain-Herausforderungen im australischen Markt</strong><strong class="lang-en">🇩🇪 Bachelor Thesis — Supply-Chain Challenges in the Australian Market</strong><br><span class="lang-de inline">Case Study zu BRITA mit Verbindung von Marktbedingungen, Supply Chain und strategischen Entscheidungen.</span><span class="lang-en inline">BRITA case study connecting market conditions, supply chain and strategic decisions.</span></div>
-<div><strong>🇦🇺 Master of Management at UTS Sydney (2025–2026)</strong><br><span class="lang-de inline">Global Strategic Management und Strategic Supply Chain Management. Abschluss: WAM 81,42, GPA 6,08/7,0.</span><span class="lang-en inline">Global Strategic Management and Strategic Supply Chain Management. Final results: WAM 81.42, GPA 6.08/7.0.</span></div>
-<div><strong>🇦🇺 Tokyo Headspa Sydney — Marketing Intern</strong><br><span class="lang-de inline">Junges, schnell wachsendes Unternehmen mit Start-up-Charakter. In diesem fast-paced Umfeld unterstützte ich Markt- und Wettbewerbsanalysen, Kampagnenoptimierung, Performance Analysis, Influencer Research, Social Media, E-Mail-Marketing und Serviceportfolio-Empfehlungen.</span><span class="lang-en inline">A young, fast-growing company with a start-up mindset. In this fast-paced environment, I supported market and competitor analysis, campaign optimisation, performance analysis, influencer research, social media, email marketing and service portfolio recommendations.</span></div>
-<div><strong class="lang-de">🛒 Nächster Schritt: Picnic Future Leaders Graduate Program?</strong><strong class="lang-en">🛒 Next Step: Picnic Future Leaders Graduate Program?</strong><br><span class="lang-de inline">Customer Data, Category Management, Pricing, App Experience, Innovation und Ownership.</span><span class="lang-en inline">Customer data, category management, pricing, app experience, innovation and ownership.</span></div>
-</div></section>
-<section class="technology-band"><h3 class="lang-de">Vom Customer Insight zur sichtbaren Verbesserung</h3><h3 class="lang-en">From Customer Insight to Visible Improvement</h3><p class="lang-de">An Picnic begeistert mich die direkte Verbindung aus digitalem Kundenerlebnis, Sortiment, Pricing, Technologie und Operations. Entscheidungen werden in der App, im Sortiment und in der täglichen Kundenerfahrung sichtbar.</p><p class="lang-en">What excites me about Picnic is the direct connection between digital customer experience, assortment, pricing, technology and operations. Decisions become visible in the app, the assortment and the daily customer experience.</p><p class="lang-de">Für mich bedeutet modernes Consumer Management, Daten schnell in klare Entscheidungen, Tests und operative Verbesserungen zu übersetzen.</p><p class="lang-en">To me, modern consumer management means rapidly turning data into clear decisions, experiments and operational improvements.</p></section>
-<section id="picnic"><h3>Why Picnic?</h3><div class="accent-line"></div><div class="intro"><p class="lang-de">Picnic verbindet Technologie, Retail, Daten und eine integrierte Supply Chain zu einem modernen, nachhaltigen Kundenerlebnis.</p><p class="lang-en">Picnic combines technology, retail, data and an integrated supply chain into a modern and sustainable customer experience.</p><p class="lang-de">Ab Tag eins mit echten Daten, echten Projekten und messbarem Impact zu arbeiten, passt zu meiner Motivation, Verantwortung aktiv zu übernehmen.</p><p class="lang-en">Working with real data, real projects and measurable impact from day one matches my motivation to actively take ownership.</p><p class="lang-de">Die „Act like an Owner“-Mentalität, das schnelle Tempo und die Zusammenarbeit mit Category, Design, Copywriting und Tech entsprechen genau der Umgebung, in der ich meine analytischen, kreativen und kommunikativen Stärken einbringen möchte.</p><p class="lang-en">The “Act like an Owner” mindset, fast pace and collaboration with Category, Design, Copywriting and Tech are exactly the environment in which I want to contribute my analytical, creative and communication strengths.</p></div></section>
-<section id="program"><h3 class="lang-de">Warum dieses Programm zu mir passt</h3><h3 class="lang-en">Why This Program Fits Me</h3><div class="accent-line"></div><div class="program-grid">
-<div class="program-box"><div class="emoji">🔎</div><h4>Customer Behaviour & Insights</h4><p class="lang-de">Erfahrung mit Kundensegmenten, Kaufverhalten, Marktpotenzial und Kampagnenperformance.</p><p class="lang-en">Experience with customer segments, purchasing behaviour, market potential and campaign performance.</p></div>
-<div class="program-box"><div class="emoji">🏷️</div><h4>Pricing, Promotions & Commercial Decisions</h4><p class="lang-de">Das BRITA-Projekt verbindet Preislogik, Customer Value, Marktpotenzial und kommerzielle Tragfähigkeit.</p><p class="lang-en">The BRITA project connects pricing logic, customer value, market potential and commercial viability.</p></div>
-<div class="program-box"><div class="emoji">📱</div><h4>App Experience & Digital Growth</h4><p class="lang-de">Meine digitale Marketingerfahrung hilft mir zu verstehen, wie Content, Nutzerführung und datenbasierte Optimierung ein starkes App-Erlebnis schaffen.</p><p class="lang-en">My digital marketing experience helps me understand how content, user journeys and data-driven optimisation create a strong app experience.</p></div>
-<div class="program-box"><div class="emoji">🤝</div><h4>Cross-functional Ownership</h4><p class="lang-de">Ich bringe unterschiedliche Perspektiven zusammen und sorge dafür, dass aus Analysen konkrete nächste Schritte entstehen.</p><p class="lang-en">I bring different perspectives together and ensure that analysis leads to concrete next steps.</p></div></div></section>
-<section id="requirements"><h3 class="lang-de">Direkter Fit zu Picnics Anforderungen</h3><h3 class="lang-en">Direct Match With Picnic’s Requirements</h3><div class="accent-line"></div><p class="section-subtitle lang-de">Analytischer Masterabschluss, erste Praxiserfahrung, Zahlenaffinität, Ownership, Hands-on-Mentalität und Motivation für ein schnelllebiges Consumer Business.</p><p class="section-subtitle lang-en">Analytical Master’s degree, initial practical experience, numerical affinity, ownership, a hands-on mindset and motivation for a fast-paced consumer business.</p><div class="cards">
-<div class="card accent"><div class="emoji">🎓</div><h4>International Master’s Degree</h4><p>Master of Management, UTS Sydney • WAM 81.42 • GPA 6.08/7.0</p></div>
-<div class="card accent"><div class="emoji">📈</div><h4 class="lang-de">Zahlenaffinität & Analyse</h4><h4 class="lang-en">Numerical & Analytical Mindset</h4><p class="lang-de">Market Analysis, Customer Segmentation, Commercial Viability, Brand Tracking und Performance Evaluation.</p><p class="lang-en">Market analysis, customer segmentation, commercial viability, brand tracking and performance evaluation.</p></div>
-<div class="card accent"><div class="emoji">⚡</div><h4>Fast-paced Experience</h4><p class="lang-de">Tokyo Headspa: Start-up-Charakter, wechselnde Prioritäten und hoher Umsetzungsfokus. BRITA: kommerziell dynamisches, cross-funktionales Projektumfeld.</p><p class="lang-en">Tokyo Headspa: start-up mindset, changing priorities and a strong execution focus. BRITA: commercially dynamic, cross-functional project environment.</p></div>
-<div class="card accent"><div class="emoji">🧠</div><h4>Ownership & Problem Solving</h4><p class="lang-de">Annahmen datenbasiert prüfen und komplexe Fragen in klare Empfehlungen übersetzen.</p><p class="lang-en">Testing assumptions against data and translating complex questions into clear recommendations.</p></div>
-<div class="card accent"><div class="emoji">🧩</div><h4>Cross-functional Collaboration</h4><p class="lang-de">Erfahrung an der Schnittstelle von Marketing, Sales und E-Commerce.</p><p class="lang-en">Experience at the intersection of Marketing, Sales and E-commerce.</p></div>
-<div class="card accent"><div class="emoji">🗣️</div><h4>German & English</h4><p class="lang-de">Deutsch als Muttersprache, Englisch C1 und mehrere Jahre internationale Erfahrung.</p><p class="lang-en">German native speaker, English C1 and several years of international experience.</p></div>
-</div></section>
-<section id="ideas"><h3 class="lang-de">Drei Consumer-Themen, die ich bei Picnic besonders spannend finde</h3><h3 class="lang-en">Three Consumer Topics I Find Especially Exciting at Picnic</h3><div class="accent-line"></div><div class="cards">
-<div class="card accent"><div class="emoji">🏷️</div><h4>Smarter Pricing & Promotions</h4><p class="lang-de">Preis, Promotion, Nachfrage und Customer Value datenbasiert verbinden.</p><p class="lang-en">Connecting pricing, promotions, demand and customer value through data.</p></div>
-<div class="card accent"><div class="emoji">🥑</div><h4>Customer-centric Assortment</h4><p class="lang-de">Trends, Such- und Kaufverhalten sowie Kundenfeedback nutzen, um Sortimente relevanter zu gestalten.</p><p class="lang-en">Using trends, search and purchasing behaviour and customer feedback to make assortments more relevant.</p></div>
-<div class="card accent"><div class="emoji">📲</div><h4>Better App Experiences</h4><p class="lang-de">Intuitive Nutzerführung, relevanter Content, klare Angebote und kontinuierliche datenbasierte Optimierung.</p><p class="lang-en">Intuitive user journeys, relevant content, clear offers and continuous data-driven optimisation.</p></div>
-</div></section>
-<section class="highlight"><h3 class="lang-de">Meine Motivation</h3><h3 class="lang-en">My Motivation</h3><div class="accent-line"></div><p class="lang-de">Ich habe gelernt, analytische Tiefe mit Tempo, Kreativität und pragmatischer Umsetzung zu verbinden.</p><p class="lang-en">I have learned to combine analytical depth with speed, creativity and pragmatic execution.</p><p class="lang-de">Jetzt möchte ich Customer Insights, Pricing, Category Thinking und digitale Customer Experience mit echter Ownership und sichtbarem Business Impact verbinden.</p><p class="lang-en">I now want to connect customer insights, pricing, category thinking and digital customer experience with real ownership and visible business impact.</p><p class="lang-de">Für mich bietet das Picnic Future Leaders Graduate Program Consumer genau diese Möglichkeit.</p><p class="lang-en">For me, the Picnic Future Leaders Graduate Program Consumer offers exactly this opportunity.</p></section>
-<footer id="contact"><p><strong>Jan Kraege</strong></p><p>Email: <a href="mailto:jan.kraege@icloud.com">jan.kraege@icloud.com</a></p><p>Phone: <a href="tel:+4915226436229">+49 152 26436229</a></p><p>LinkedIn: <a href="https://www.linkedin.com/in/jan-kraege" target="_blank" rel="noopener">linkedin.com/in/jan-kraege</a></p></footer>
-<script>const toggleButton=document.getElementById('languageToggle');function setLanguage(language){if(language==='en'){document.body.classList.remove('show-de');document.body.classList.add('show-en');document.documentElement.lang='en';toggleButton.textContent='Deutsch';}else{document.body.classList.remove('show-en');document.body.classList.add('show-de');document.documentElement.lang='de';toggleButton.textContent='English';}}toggleButton.addEventListener('click',function(){const currentlyGerman=document.body.classList.contains('show-de');setLanguage(currentlyGerman?'en':'de');});setLanguage('de');</script>
-</body></html>
+
+  <nav>
+    <a class="brand" href="#entrance">
+      <div class="brand-mark">PIC<br>NIC</div>
+      <div class="brand-name">
+        Jan's Consumer Store
+        <small>
+          <span class="lang-de inline">Bewerbung Future Leaders Graduate Program</span>
+          <span class="lang-en inline">Future Leaders Graduate Program Application</span>
+        </small>
+      </div>
+    </a>
+
+    <ul>
+      <li><a href="#fresh"><span class="lang-de inline">Frischetheke</span><span class="lang-en inline">Fresh Produce</span></a></li>
+      <li><a href="#insights"><span class="lang-de inline">Insights-Regal</span><span class="lang-en inline">Insights Aisle</span></a></li>
+      <li><a href="#digital"><span class="lang-de inline">Digital-Abteilung</span><span class="lang-en inline">Digital Aisle</span></a></li>
+      <li><a href="#journey"><span class="lang-de inline">Lieferroute</span><span class="lang-en inline">Delivery Route</span></a></li>
+      <li><a href="#picnic"><span class="lang-de inline">Owner's Choice</span><span class="lang-en inline">Owner's Choice</span></a></li>
+      <li><button class="lang-button" id="languageToggle" type="button">English</button></li>
+      <li><a class="contact-button" href="#checkout"><span class="lang-de inline">Zur Kasse</span><span class="lang-en inline">Checkout</span></a></li>
+    </ul>
+  </nav>
+
+  <header id="entrance">
+    <div class="hero-copy">
+      <span class="eyebrow lang-de">Eingangsbereich · Picnic Consumer Bewerbung</span>
+      <span class="eyebrow lang-en">Entrance · Picnic Consumer Application</span>
+
+      <h1 class="lang-de">Willkommen in meinem Consumer Store.</h1>
+      <h1 class="lang-en">Welcome to my Consumer Store.</h1>
+
+      <h2 class="lang-de">
+        Eine frische Mischung aus <strong>Customer Insights, kommerzieller Analyse und hands-on Umsetzung</strong> – zusammengestellt für Picnics Future Leaders Graduate Program.
+      </h2>
+      <h2 class="lang-en">
+        A fresh mix of <strong>customer insights, commercial analysis and hands-on execution</strong> – selected for Picnic's Future Leaders Graduate Program.
+      </h2>
+
+      <div class="hero-tags">
+        <span>Customer Behaviour</span>
+        <span>Pricing</span>
+        <span>Category Thinking</span>
+        <span>App Experience</span>
+        <span>Fast-paced</span>
+        <span>Ownership</span>
+      </div>
+
+      <a href="#fresh" class="start-button">
+        <span class="lang-de inline">Einkauf starten</span>
+        <span class="lang-en inline">Start shopping</span>
+      </a>
+    </div>
+
+    <div class="hero-scene" aria-hidden="true">
+      <div class="store-front">
+        <div class="awning"></div>
+        <div class="store-sign">JAN'S CONSUMER STORE</div>
+        <div class="store-window">
+          <div class="shelf-mini">
+            <div class="product red"></div>
+            <div class="product green"></div>
+            <div class="product yellow"></div>
+          </div>
+
+          <div class="phone">
+            <div class="phone-top"></div>
+            <div class="phone-card">Customer Insights</div>
+            <div class="phone-card green">Pricing & Promotions</div>
+            <div class="phone-card yellow">Better App Experience</div>
+            <div class="phone-card">Act like an Owner</div>
+          </div>
+
+          <div class="shelf-mini">
+            <div class="product orange"></div>
+            <div class="product purple"></div>
+            <div class="product red"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cart">
+        <div class="cart-handle"></div>
+        <div class="cart-basket"></div>
+        <div class="wheel one"></div>
+        <div class="wheel two"></div>
+      </div>
+    </div>
+  </header>
+
+  <section id="fresh">
+    <span class="aisle-label lang-de">Abteilung 01 · Obst & Gemüse</span>
+    <span class="aisle-label lang-en">Aisle 01 · Fresh Produce</span>
+
+    <h2 class="section-title lang-de">Was ich frisch mitbringe</h2>
+    <h2 class="section-title lang-en">What I Bring Fresh to the Team</h2>
+
+    <p class="section-subtitle lang-de">
+      Meine persönlichen Stärken – nicht als Standard-Skill-Liste, sondern als sorgfältig ausgewählte Zutaten für ein schnelllebiges, datengetriebenes Consumer Business.
+    </p>
+    <p class="section-subtitle lang-en">
+      My personal strengths – not as a standard skills list, but as carefully selected ingredients for a fast-paced, data-driven consumer business.
+    </p>
+
+    <div class="shelf">
+      <div class="product-grid">
+        <article class="produce-card">
+          <span class="price-tag">Fresh</span>
+          <div class="produce-illustration apple"></div>
+          <h3 class="lang-de">Analytisches Denken</h3>
+          <h3 class="lang-en">Analytical Thinking</h3>
+          <p class="lang-de">Komplexe Informationen strukturieren und in klare Entscheidungen übersetzen.</p>
+          <p class="lang-en">Structuring complex information and translating it into clear decisions.</p>
+        </article>
+
+        <article class="produce-card">
+          <span class="price-tag">Curious</span>
+          <div class="produce-illustration lemon"></div>
+          <h3 class="lang-de">Neugier</h3>
+          <h3 class="lang-en">Curiosity</h3>
+          <p class="lang-de">Annahmen hinterfragen, tiefer graben und nicht bei der ersten Antwort stehen bleiben.</p>
+          <p class="lang-en">Questioning assumptions, digging deeper and not settling for the first answer.</p>
+        </article>
+
+        <article class="produce-card">
+          <span class="price-tag">Flexible</span>
+          <div class="produce-illustration avocado"></div>
+          <h3 class="lang-de">Anpassungsfähigkeit</h3>
+          <h3 class="lang-en">Adaptability</h3>
+          <p class="lang-de">Schnell auf neue Prioritäten, Teams und internationale Umfelder reagieren.</p>
+          <p class="lang-en">Adapting quickly to new priorities, teams and international environments.</p>
+        </article>
+
+        <article class="produce-card">
+          <span class="price-tag">Open</span>
+          <div class="produce-illustration tomato"></div>
+          <h3 class="lang-de">Kommunikation</h3>
+          <h3 class="lang-en">Communication</h3>
+          <p class="lang-de">Menschen zusammenbringen und komplexe Themen verständlich präsentieren.</p>
+          <p class="lang-en">Bringing people together and presenting complex topics clearly.</p>
+        </article>
+
+        <article class="produce-card">
+          <span class="price-tag">Hands-on</span>
+          <div class="produce-illustration carrot"></div>
+          <h3 class="lang-de">Umsetzungsstärke</h3>
+          <h3 class="lang-en">Hands-on Execution</h3>
+          <p class="lang-de">Ideen pragmatisch in konkrete Maßnahmen und nächste Schritte überführen.</p>
+          <p class="lang-en">Turning ideas pragmatically into concrete actions and next steps.</p>
+        </article>
+
+        <article class="produce-card">
+          <span class="price-tag">Team</span>
+          <div class="produce-illustration grapes"></div>
+          <h3 class="lang-de">Teamwork</h3>
+          <h3 class="lang-en">Teamwork</h3>
+          <p class="lang-de">Unterschiedliche Perspektiven aufnehmen und auf ein gemeinsames Ziel ausrichten.</p>
+          <p class="lang-en">Combining different perspectives around a shared goal.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="insights">
+    <span class="aisle-label lang-de">Abteilung 02 · Market Insights</span>
+    <span class="aisle-label lang-en">Aisle 02 · Market Insights</span>
+
+    <h2 class="section-title lang-de">BRITA Business Case im Insights-Regal</h2>
+    <h2 class="section-title lang-en">BRITA Business Case on the Insights Shelf</h2>
+
+    <p class="section-subtitle lang-de">
+      Ein konkretes Beispiel dafür, wie ich Kundendaten, Marktinformationen und kommerzielle Überlegungen in eine objektive Management-Empfehlung übersetzt habe.
+    </p>
+    <p class="section-subtitle lang-en">
+      A concrete example of how I translated customer data, market information and commercial considerations into an objective management recommendation.
+    </p>
+
+    <div class="case-layout">
+      <div class="case-summary">
+        <h3 class="lang-de">Subscription Model – Commercial Viability</h3>
+        <h3 class="lang-en">Subscription Model – Commercial Viability</h3>
+
+        <p class="lang-de">
+          Bei BRITA Australia untersuchte ich, ob ein Subscription Model im australischen Markt wirtschaftlich tragfähig wäre. Dabei arbeitete ich an der Schnittstelle von Marketing, Sales und E-Commerce.
+        </p>
+        <p class="lang-en">
+          At BRITA Australia, I assessed whether a subscription model could be commercially viable in the Australian market, working at the intersection of Marketing, Sales and E-commerce.
+        </p>
+
+        <p class="lang-de">
+          Wichtig war nicht, eine bestehende Idee zu bestätigen, sondern die Daten objektiv zu bewerten und eine klare, belastbare Richtung vorzuschlagen.
+        </p>
+        <p class="lang-en">
+          The objective was not to validate an existing idea, but to assess the evidence objectively and propose a clear, well-supported direction.
+        </p>
+
+        <div class="result-stamp lang-de">
+          Empfehlung: Unter den untersuchten Bedingungen nicht umsetzen.
+        </div>
+        <div class="result-stamp lang-en">
+          Recommendation: Do not proceed under the assessed conditions.
+        </div>
+      </div>
+
+      <div class="insight-shelf">
+        <article class="insight-box" data-number="01">
+          <h4 class="lang-de">Customer Segments</h4>
+          <h4 class="lang-en">Customer Segments</h4>
+          <p class="lang-de">Welche Kundengruppen könnten einen echten Nutzen aus dem Modell ziehen?</p>
+          <p class="lang-en">Which customer groups could derive genuine value from the model?</p>
+        </article>
+
+        <article class="insight-box" data-number="02">
+          <h4 class="lang-de">Purchasing Behaviour</h4>
+          <h4 class="lang-en">Purchasing Behaviour</h4>
+          <p class="lang-de">Wie kaufen Kunden heute und wie wahrscheinlich ist eine Verhaltensänderung?</p>
+          <p class="lang-en">How do customers currently purchase and how likely is behaviour to change?</p>
+        </article>
+
+        <article class="insight-box" data-number="03">
+          <h4 class="lang-de">Market Potential</h4>
+          <h4 class="lang-en">Market Potential</h4>
+          <p class="lang-de">Ist die potenzielle Nachfrage groß genug, um das Modell nachhaltig zu tragen?</p>
+          <p class="lang-en">Is the potential demand large enough to support the model sustainably?</p>
+        </article>
+
+        <article class="insight-box" data-number="04">
+          <h4 class="lang-de">Competitive Dynamics</h4>
+          <h4 class="lang-en">Competitive Dynamics</h4>
+          <p class="lang-de">Welche Alternativen bestehen und wie differenziert wäre das Angebot?</p>
+          <p class="lang-en">Which alternatives exist and how differentiated would the offer be?</p>
+        </article>
+
+        <article class="insight-box" data-number="05">
+          <h4 class="lang-de">Commercial Impact</h4>
+          <h4 class="lang-en">Commercial Impact</h4>
+          <p class="lang-de">Wie verhalten sich Customer Value, Aufwand, Risiko und wirtschaftlicher Nutzen?</p>
+          <p class="lang-en">How do customer value, effort, risk and commercial benefit relate?</p>
+        </article>
+
+        <article class="insight-box" data-number="06">
+          <h4 class="lang-de">Management Recommendation</h4>
+          <h4 class="lang-en">Management Recommendation</h4>
+          <p class="lang-de">Klare Entscheidungsgrundlage statt einer rein beschreibenden Analyse.</p>
+          <p class="lang-en">A clear basis for decision-making rather than a purely descriptive analysis.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="fast-section" id="fast">
+    <div class="inner">
+      <span class="aisle-label lang-de">Abteilung 03 · Fast-Moving Goods</span>
+      <span class="aisle-label lang-en">Aisle 03 · Fast-Moving Goods</span>
+
+      <h2 class="section-title lang-de">Strukturierte Analyse trifft fast-paced Umsetzung</h2>
+      <h2 class="section-title lang-en">Structured Analysis Meets Fast-paced Execution</h2>
+
+      <p class="section-subtitle lang-de">
+        Meine Erfahrung umfasst sowohl ein international strukturiertes Unternehmen als auch ein junges, schnell wachsendes Business mit Start-up-Charakter.
+      </p>
+      <p class="section-subtitle lang-en">
+        My experience spans both a structured international company and a young, fast-growing business with a start-up mindset.
+      </p>
+
+      <div class="comparison">
+        <article class="company-crate red">
+          <span class="label">BRITA Australia</span>
+          <h3 class="lang-de">Kommerzielle Dynamik</h3>
+          <h3 class="lang-en">Commercial Dynamics</h3>
+          <ul class="lang-de">
+            <li>Cross-funktionale Zusammenarbeit mit Marketing, Sales und E-Commerce</li>
+            <li>Markt-, Kunden- und Wettbewerbsanalysen</li>
+            <li>Definierte Projektzeiträume und Management-Präsentation</li>
+            <li>Objektive Empfehlung mit kommerzieller Relevanz</li>
+          </ul>
+          <ul class="lang-en">
+            <li>Cross-functional collaboration across Marketing, Sales and E-commerce</li>
+            <li>Market, customer and competitor analysis</li>
+            <li>Defined project timelines and management presentation</li>
+            <li>Objective recommendation with commercial relevance</li>
+          </ul>
+        </article>
+
+        <div class="formula lang-de">Analytische Tiefe<br>+<br>Tempo<br>+<br>Ownership</div>
+        <div class="formula lang-en">Analytical Depth<br>+<br>Speed<br>+<br>Ownership</div>
+
+        <article class="company-crate green">
+          <span class="label">Tokyo Headspa Sydney</span>
+          <h3 class="lang-de">Start-up-Charakter</h3>
+          <h3 class="lang-en">Start-up Mindset</h3>
+          <ul class="lang-de">
+            <li>Junges, schnell wachsendes Unternehmen</li>
+            <li>Wechselnde Prioritäten und kurze Umsetzungsschleifen</li>
+            <li>Kampagnenoptimierung, Performance Analysis und CRM</li>
+            <li>Eigeninitiative, Kreativität und pragmatische Lösungen</li>
+          </ul>
+          <ul class="lang-en">
+            <li>Young, fast-growing business</li>
+            <li>Changing priorities and short execution cycles</li>
+            <li>Campaign optimisation, performance analysis and CRM</li>
+            <li>Initiative, creativity and pragmatic solutions</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="digital">
+    <span class="aisle-label lang-de">Abteilung 04 · Digital & App</span>
+    <span class="aisle-label lang-en">Aisle 04 · Digital & App</span>
+
+    <h2 class="section-title lang-de">Die digitale Abteilung</h2>
+    <h2 class="section-title lang-en">The Digital Aisle</h2>
+
+    <p class="section-subtitle lang-de">
+      Meine digitale Marketingerfahrung hilft mir zu verstehen, wie Content, Nutzerführung, Kampagnen, CRM und Daten gemeinsam ein besseres App-Erlebnis schaffen.
+    </p>
+    <p class="section-subtitle lang-en">
+      My digital marketing experience helps me understand how content, user journeys, campaigns, CRM and data work together to create a better app experience.
+    </p>
+
+    <div class="digital-store">
+      <div class="phone-large" aria-hidden="true">
+        <div class="screen">
+          <div class="app-header">
+            <div class="app-logo">PIC<br>NIC</div>
+            <span>Good morning, Jan</span>
+            <span>🛒</span>
+          </div>
+
+          <div class="app-banner">
+            <small>Consumer opportunity</small>
+            <strong>Make the weekly shop simpler</strong>
+            <span>Better content, relevant offers and intuitive choices.</span>
+          </div>
+
+          <div class="app-products">
+            <div class="app-product">
+              <div class="blob" style="background:#e84c46"></div>
+              <b>Customer Insight</b>
+              <small>Understand behaviour</small>
+            </div>
+            <div class="app-product">
+              <div class="blob" style="background:#70b64a"></div>
+              <b>Pricing</b>
+              <small>Balance value & impact</small>
+            </div>
+            <div class="app-product">
+              <div class="blob" style="background:#f1cf47"></div>
+              <b>Assortment</b>
+              <small>Spot unmet needs</small>
+            </div>
+            <div class="app-product">
+              <div class="blob" style="background:#8053a0"></div>
+              <b>Experiment</b>
+              <small>Test and learn</small>
+            </div>
+          </div>
+
+          <div class="app-banner" style="margin-top:17px;background:#eef8eb;border-color:#cee3c8">
+            <small>Act like an Owner</small>
+            <strong>Insight → Action → Impact</strong>
+          </div>
+
+          <div class="app-bottom">
+            <span>⌂</span><span>◎</span><span>□</span><span>⌕</span><span>🛒</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="digital-points">
+        <article class="digital-point">
+          <div class="icon">📣</div>
+          <div>
+            <h3 class="lang-de">Campaign Performance</h3>
+            <h3 class="lang-en">Campaign Performance</h3>
+            <p class="lang-de">Kampagnen nicht nur kreativ entwickeln, sondern anhand ihrer Wirkung bewerten und verbessern.</p>
+            <p class="lang-en">Not only developing campaigns creatively, but evaluating and improving them based on impact.</p>
+          </div>
+        </article>
+
+        <article class="digital-point">
+          <div class="icon">✉️</div>
+          <div>
+            <h3 class="lang-de">CRM & E-Mail-Marketing</h3>
+            <h3 class="lang-en">CRM & Email Marketing</h3>
+            <p class="lang-de">Praktische Erfahrung mit Mailchimp und Salesforce Marketing Cloud.</p>
+            <p class="lang-en">Hands-on experience with Mailchimp and Salesforce Marketing Cloud.</p>
+          </div>
+        </article>
+
+        <article class="digital-point">
+          <div class="icon">🧭</div>
+          <div>
+            <h3 class="lang-de">Customer Journey</h3>
+            <h3 class="lang-en">Customer Journey</h3>
+            <p class="lang-de">Verstehen, wie Inhalte, Angebote und Nutzerführung relevante Erlebnisse schaffen.</p>
+            <p class="lang-en">Understanding how content, offers and user journeys create relevant experiences.</p>
+          </div>
+        </article>
+
+        <article class="digital-point">
+          <div class="icon">✨</div>
+          <div>
+            <h3 class="lang-de">AI-supported Ideation</h3>
+            <h3 class="lang-en">AI-supported Ideation</h3>
+            <p class="lang-de">KI als Werkzeug für schnellere Recherche, Ideenentwicklung und Content-Unterstützung einsetzen.</p>
+            <p class="lang-en">Using AI as a tool for faster research, ideation and content support.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="pricing">
+    <span class="aisle-label lang-de">Abteilung 05 · Pricing & Promotions</span>
+    <span class="aisle-label lang-en">Aisle 05 · Pricing & Promotions</span>
+
+    <h2 class="section-title lang-de">Mein kommerzieller Denkrahmen</h2>
+    <h2 class="section-title lang-en">My Commercial Thinking Framework</h2>
+
+    <p class="section-subtitle lang-de">
+      Gutes Pricing bedeutet für mich nicht einfach, Preise zu senken. Es verbindet Customer Value, Nachfrage und nachhaltige Business-Wirkung.
+    </p>
+    <p class="section-subtitle lang-en">
+      To me, good pricing is not simply about lowering prices. It connects customer value, demand and sustainable business impact.
+    </p>
+
+    <div class="pricing-counter">
+      <article class="price-card">
+        <span class="ticket">01 · Value</span>
+        <h3 class="lang-de">Customer Value</h3>
+        <h3 class="lang-en">Customer Value</h3>
+        <p class="lang-de">Ist das Angebot relevant, verständlich und spürbar wertvoll für die Zielgruppe?</p>
+        <p class="lang-en">Is the offer relevant, understandable and genuinely valuable for the target group?</p>
+      </article>
+
+      <article class="price-card">
+        <span class="ticket">02 · Demand</span>
+        <h3 class="lang-de">Customer Behaviour</h3>
+        <h3 class="lang-en">Customer Behaviour</h3>
+        <p class="lang-de">Wie verändern Preis, Promotion und Sortiment tatsächliches Such- und Kaufverhalten?</p>
+        <p class="lang-en">How do pricing, promotions and assortment change actual search and purchasing behaviour?</p>
+      </article>
+
+      <article class="price-card">
+        <span class="ticket">03 · Impact</span>
+        <h3 class="lang-de">Commercial Impact</h3>
+        <h3 class="lang-en">Commercial Impact</h3>
+        <p class="lang-de">Verbessert die Entscheidung Wachstum und Kundennutzen, ohne langfristige Wirtschaftlichkeit zu vernachlässigen?</p>
+        <p class="lang-en">Does the decision improve growth and customer benefit without compromising long-term commercial sustainability?</p>
+      </article>
+    </div>
+
+    <p class="pricing-quote lang-de">
+      „Daten liefern nicht automatisch die Antwort – aber sie helfen, die bessere Frage zu stellen und fundierter zu entscheiden.“
+    </p>
+    <p class="pricing-quote lang-en">
+      “Data does not automatically provide the answer – but it helps us ask a better question and make a more informed decision.”
+    </p>
+  </section>
+
+  <section id="journey">
+    <span class="aisle-label lang-de">Abteilung 06 · Internationale Produkte</span>
+    <span class="aisle-label lang-en">Aisle 06 · International Products</span>
+
+    <h2 class="section-title lang-de">Meine internationale Lieferroute</h2>
+    <h2 class="section-title lang-en">My International Delivery Route</h2>
+
+    <p class="section-subtitle lang-de">
+      Von Deutschland nach Sydney und zurück – jeder Stopp hat eine andere Zutat zu meinem heutigen Profil beigetragen.
+    </p>
+    <p class="section-subtitle lang-en">
+      From Germany to Sydney and back – each stop added a different ingredient to the profile I bring today.
+    </p>
+
+    <div class="route">
+      <div class="route-line"></div>
+      <div class="route-grid">
+        <div class="route-stop">
+          <div class="route-pin">🇩🇪</div>
+          <h3>Bachelor</h3>
+          <p>Business Administration<br>2020–2024</p>
+        </div>
+
+        <div class="route-stop">
+          <div class="route-pin">✈️</div>
+          <h3>Exchange</h3>
+          <p>UTS Sydney<br>2022</p>
+        </div>
+
+        <div class="route-stop">
+          <div class="route-pin">💧</div>
+          <h3>BRITA</h3>
+          <p>Sales & Marketing<br>2022–2023</p>
+        </div>
+
+        <div class="route-stop">
+          <div class="route-pin">📚</div>
+          <h3>Thesis</h3>
+          <p>Australian Supply Chains<br>2024</p>
+        </div>
+
+        <div class="route-stop">
+          <div class="route-pin">🎓</div>
+          <h3>Master</h3>
+          <p>UTS Management<br>2025–2026</p>
+        </div>
+
+        <div class="route-stop">
+          <div class="route-pin">🌏</div>
+          <h3>Global Work</h3>
+          <p>Intercultural Practice<br>UTS</p>
+        </div>
+
+        <div class="route-stop">
+          <div class="route-pin">⚡</div>
+          <h3>Tokyo Headspa</h3>
+          <p>Fast-growing Business<br>2026</p>
+        </div>
+
+        <div class="route-stop">
+          <div class="route-pin">🛒</div>
+          <h3>Next Stop</h3>
+          <p>Picnic Düsseldorf<br>2026</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="picnic">
+    <span class="aisle-label lang-de">Abteilung 07 · Owner's Choice</span>
+    <span class="aisle-label lang-en">Aisle 07 · Owner's Choice</span>
+
+    <h2 class="section-title lang-de">Warum Picnic in meinen Warenkorb gehört</h2>
+    <h2 class="section-title lang-en">Why Picnic Belongs in My Basket</h2>
+
+    <p class="section-subtitle lang-de">
+      Das Programm verbindet genau die Arbeitsweise, die mich motiviert: echte Daten, frühe Verantwortung, schnelle Entscheidungen und sichtbaren Impact.
+    </p>
+    <p class="section-subtitle lang-en">
+      The program combines exactly the way of working that motivates me: real data, early ownership, fast decisions and visible impact.
+    </p>
+
+    <div class="owner-board">
+      <article class="owner-card">
+        <div class="emoji">📊</div>
+        <h3 class="lang-de">Echte Daten</h3>
+        <h3 class="lang-en">Real Data</h3>
+        <p class="lang-de">Kundenverhalten beobachten und konkrete Insights ableiten.</p>
+        <p class="lang-en">Observing customer behaviour and deriving concrete insights.</p>
+      </article>
+
+      <article class="owner-card">
+        <div class="emoji">🧪</div>
+        <h3 class="lang-de">Test & Learn</h3>
+        <h3 class="lang-en">Test & Learn</h3>
+        <p class="lang-de">Ideen ausprobieren, Wirkung messen und kontinuierlich verbessern.</p>
+        <p class="lang-en">Testing ideas, measuring impact and improving continuously.</p>
+      </article>
+
+      <article class="owner-card">
+        <div class="emoji">🤝</div>
+        <h3 class="lang-de">Cross-functional</h3>
+        <h3 class="lang-en">Cross-functional</h3>
+        <p class="lang-de">Mit Category, Design, Copywriting, Tech und Operations arbeiten.</p>
+        <p class="lang-en">Working with Category, Design, Copywriting, Tech and Operations.</p>
+      </article>
+
+      <article class="owner-card">
+        <div class="emoji">⚡</div>
+        <h3 class="lang-de">Fast-paced</h3>
+        <h3 class="lang-en">Fast-paced</h3>
+        <p class="lang-de">Schnell lernen, priorisieren und pragmatisch umsetzen.</p>
+        <p class="lang-en">Learning quickly, prioritising and executing pragmatically.</p>
+      </article>
+
+      <article class="owner-card">
+        <div class="emoji">🌱</div>
+        <h3 class="lang-de">Nachhaltigkeit</h3>
+        <h3 class="lang-en">Sustainability</h3>
+        <p class="lang-de">Ein Geschäftsmodell mit elektrischer Flotte und weniger Food Waste.</p>
+        <p class="lang-en">A business model with an electric fleet and reduced food waste.</p>
+      </article>
+
+      <article class="owner-card">
+        <div class="emoji">🚀</div>
+        <h3 class="lang-de">Ownership</h3>
+        <h3 class="lang-en">Ownership</h3>
+        <p class="lang-de">Verantwortung übernehmen und sichtbare Verbesserungen schaffen.</p>
+        <p class="lang-en">Taking responsibility and creating visible improvements.</p>
+      </article>
+    </div>
+
+    <div class="process-belt">
+      <div class="process-step"><span>01</span><b class="lang-de">Chance erkennen</b><b class="lang-en">Spot the opportunity</b></div>
+      <div class="process-step"><span>02</span><b class="lang-de">Daten analysieren</b><b class="lang-en">Analyse the data</b></div>
+      <div class="process-step"><span>03</span><b class="lang-de">Annahmen prüfen</b><b class="lang-en">Challenge assumptions</b></div>
+      <div class="process-step"><span>04</span><b class="lang-de">Idee testen</b><b class="lang-en">Test the idea</b></div>
+      <div class="process-step"><span>05</span><b class="lang-de">Impact messen</b><b class="lang-en">Measure impact</b></div>
+      <div class="process-step"><span>06</span><b class="lang-de">Weiter verbessern</b><b class="lang-en">Improve again</b></div>
+    </div>
+  </section>
+
+  <section class="checkout-section" id="checkout">
+    <div class="checkout-inner">
+      <div class="checkout-copy">
+        <span class="aisle-label lang-de">Kasse · Motivation</span>
+        <span class="aisle-label lang-en">Checkout · Motivation</span>
+
+        <h2 class="lang-de">Neugierig genug, um zu hinterfragen. Analytisch genug, um zu entscheiden. Hands-on genug, um umzusetzen.</h2>
+        <h2 class="lang-en">Curious enough to question. Analytical enough to decide. Hands-on enough to deliver.</h2>
+
+        <p class="lang-de">
+          Ich suche ein Umfeld, in dem ich Customer Insights, Pricing, Category Thinking, digitale Customer Experience und strategisches Denken mit echter Ownership und sichtbarem Business Impact verbinden kann.
+        </p>
+        <p class="lang-en">
+          I am looking for an environment where I can connect customer insights, pricing, category thinking, digital customer experience and strategic thinking with real ownership and visible business impact.
+        </p>
+
+        <p class="lang-de">
+          Das Picnic Future Leaders Graduate Program Consumer bietet für mich genau diese Möglichkeit.
+        </p>
+        <p class="lang-en">
+          The Picnic Future Leaders Graduate Program Consumer offers exactly this opportunity.
+        </p>
+      </div>
+
+      <div class="receipt">
+        <h3>YOUR BASKET</h3>
+        <div class="receipt-sub">Jan Kraege · Consumer Graduate Candidate</div>
+
+        <div class="receipt-line"><span>International Experience</span><span>✓</span></div>
+        <div class="receipt-line"><span>Customer Insights</span><span>✓</span></div>
+        <div class="receipt-line"><span>Commercial Analysis</span><span>✓</span></div>
+        <div class="receipt-line"><span>Digital Marketing & CRM</span><span>✓</span></div>
+        <div class="receipt-line"><span>Fast-paced Execution</span><span>✓</span></div>
+        <div class="receipt-line"><span>Ownership Mindset</span><span>✓</span></div>
+        <div class="receipt-line"><span>German & English</span><span>✓</span></div>
+
+        <div class="receipt-total">
+          <span>TOTAL</span>
+          <span>READY TO CONTRIBUTE</span>
+        </div>
+
+        <div class="barcode"></div>
+
+        <div class="receipt-contact">
+          <strong>Jan Kraege</strong><br>
+          <a href="mailto:jan.kraege@icloud.com">jan.kraege@icloud.com</a><br>
+          <a href="tel:+4915226436229">+49 152 26436229</a><br>
+          <a href="https://www.linkedin.com/in/jan-kraege" target="_blank" rel="noopener">linkedin.com/in/jan-kraege</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span class="lang-de inline">Persönliche Bewerbungswebsite für das Picnic Future Leaders Graduate Program Consumer.</span>
+    <span class="lang-en inline">Personal application website for Picnic's Future Leaders Graduate Program Consumer.</span>
+  </footer>
+
+  <script>
+    const toggleButton = document.getElementById("languageToggle");
+
+    function setLanguage(language) {
+      if (language === "en") {
+        document.body.classList.remove("show-de");
+        document.body.classList.add("show-en");
+        document.documentElement.lang = "en";
+        toggleButton.textContent = "Deutsch";
+      } else {
+        document.body.classList.remove("show-en");
+        document.body.classList.add("show-de");
+        document.documentElement.lang = "de";
+        toggleButton.textContent = "English";
+      }
+    }
+
+    toggleButton.addEventListener("click", function () {
+      const currentlyGerman = document.body.classList.contains("show-de");
+      setLanguage(currentlyGerman ? "en" : "de");
+    });
+
+    setLanguage("de");
+  </script>
+</body>
+</html>
